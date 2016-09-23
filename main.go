@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"runtime"
 	"strings"
 	"syscall"
 	"time"
@@ -33,6 +34,8 @@ func main() {
 	if rawURLs == "" {
 		abort("Please pass at least one url to scrape")
 	}
+
+	log.Printf("Starting scrapy. Built with Go verion %s", runtime.Version())
 
 	urls := strings.Split(rawURLs, splitChar)
 
